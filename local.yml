@@ -1,0 +1,22 @@
+services:
+  postgres:
+    container_name: jobber-auth-postgres
+    image: postgres:18-alpine
+    environment:
+      POSTGRES_USER: jobber
+      POSTGRES_PASSWORD: jobber
+      POSTGRES_DB: jobber-auth
+    ports:
+      - 5432:5432
+    volumes:
+      - jobber-auth-db-data:/var/lib/postgresql/data
+    networks:
+      - jobber-auth-network
+
+networks:
+  jobber-auth-network:
+    driver: bridge
+
+volumes:
+  jobber-auth-db-data:
+    driver: local
