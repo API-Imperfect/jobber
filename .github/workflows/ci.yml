@@ -13,6 +13,8 @@ permissions:
 jobs:
   main:
     runs-on: ubuntu-latest
+    env:
+      AUTH_DATABASE_URL: postgres://jobber:jobber@localhost:5432/jobber-auth?schema=public
     steps:
       - uses: actions/checkout@v4
         with:
