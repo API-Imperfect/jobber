@@ -5,4 +5,7 @@ import { Field, ObjectType } from '@nestjs/graphql';
 export class User extends AbstractModel {
   @Field(() => String)
   email: string;
+
+  @Field(() => String)
+  password: string;
 }

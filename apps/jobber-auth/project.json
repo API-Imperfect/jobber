@@ -6,6 +6,10 @@
   "tags": [],
   "targets": {
     "build": {
+      "dependsOn": ["generate-types"],
+      "test": {
+        "dependsOn": ["generate-types"]
+      },
       "executor": "nx:run-commands",
       "options": {
         "command": "webpack-cli build",
@@ -16,8 +20,7 @@
         "development": {
           "args": ["--node-env=development"]
         }
-      },
-      "dependsOn": ["generate-types"]
+      }
     },
     "prune-lockfile": {
       "dependsOn": ["build"],
@@ -51,7 +54,7 @@
       "dependsOn": ["build"],
       "options": {
         "buildTarget": "jobber-auth:build",
-        "runBuildTargetDependencies": false
+        "runBuildTargetDependencies": true
       },
       "configurations": {
         "development": {
